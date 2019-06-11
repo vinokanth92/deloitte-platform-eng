@@ -22,7 +22,7 @@ Dockerize a simple Python Flask application. And push the created Docker image t
 
 - Deliverables
   - Dockerfile: Please find it in the root of the project directory.
-  - Docker Hub image link: https://cloud.docker.com/repository/registry-1.docker.io/iamvvino/python-web-app
+  - Docker Hub image link: https://hub.docker.com/r/iamvvino/python-web-app
   
 
 #### 1.3 Design Decisions
