@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: python-web-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: python-web-app
+    spec:
+      containers:
+      - name: python-web-app-cont
+        image: iamvvino/python-web-app:latest
+        ports:
+        - containerPort: 5000
