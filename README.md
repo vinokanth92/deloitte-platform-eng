@@ -33,7 +33,9 @@ Deploy the Docker image built in section 1 to a container platform.
 The chosen container platform is AWS Fargate. The reason being, Fargate is a serverless container ochestration platform which abstracts away the overhead of managing nodes of the cluster as opposed to platforms like Kubernetes or AWS Elastic Container Serivice. 
 
 #### 2.2 Design
+The following image illustrates the design of the hosted container in AWS Fargate with TCP traffic flowing via public IP 13.239.23.67 on exposed port 5000. Currently the `service` runs 2 task instances behind an application load balancer.
 
+![Design](https://github.com/vinokanth92/deloitte-platform-eng/blob/master/diagram.jpg)
 
 
 
