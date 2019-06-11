@@ -26,10 +26,8 @@ Dockerize a simple Python Flask application. And push the created Docker image t
   
 
 #### 1.3 Design Decisions
-- The source code was added into the 'image' as part of the build step using the `COPY` instruction in the `Dockerfile`. **Alertanatively, the source could have been mounted to the container using Docker volumes. The disadvantage in adding source code as part of the build step is that everytime the source code changes the image must be rebuilt. But adding all the dependencies as part of the image makes the deployment easier since the container can be just run without need for mouting volumes. On the other hand, using volumes to mount host directory will spare us from rebuilding the Docker image everytime the source code changes. This is because volumes are updated at runtime unlike Dockerfile steps which are build-time. When using volumes the container can be jsut stopped and restarted in order to deploy the latest code changes**. 
+- The source code was added into the 'image' as part of the build step using the `COPY` instruction in the `Dockerfile`. **Alertanatively, the source could have been mounted to the container using Docker volumes. The disadvantage in adding source code as part of the build step is that everytime the source code changes the image must be rebuilt. But adding all the dependencies as part of the image makes the deployment easier since the container can be just run without need for mouting volumes. On the other hand, using volumes to mount host directory will spare us from rebuilding the Docker image everytime the source code changes. This is because volumes are updated at runtime unlike Dockerfile steps which are build-time. When using volumes the container can be just stopped and restarted with lastest code deployed in the mounted volume.** 
 - In this exercise, I chose to add the source code as part of build step (Dockerfile) because I am pushing the docker image to Docker Hub. Anyone resuing the image can simply run the container since all the dependencies are packaged part of the image (ease of deployment).
-- As a note on security. The only port open in the task definition is 5000 (as required by the application). Currenly the application does not support HTTPS since security certificates are not setup on the server. But in a production environment, allowing only HTTPS connections is paramount. 
-
 
 ### Section 2
 
@@ -43,6 +41,8 @@ The following image illustrates the design of the hosted container in AWS Fargat
 
 ![Design](https://github.com/vinokanth92/deloitte-platform-eng/blob/master/diagram.jpg)
 
+ **As a note on security, the only port open in the AWS Fargate task definition is 5000 (as required by the application). Currenly the application does not support HTTPS since security certificates are not setup on the server. But in a production environment, allowing only HTTPS connections is paramount.**
+
 ### Section 3
 
 #### 3.1 Objective
@@ -53,9 +53,3 @@ Create a K8 deployment file for this application.
 
 Deliverables:
 - The K8 deployement file called the `app-k8.yaml` can be found in the root of the project directory.
-
-
-
-
-
-
